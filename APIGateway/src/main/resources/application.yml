@@ -1,0 +1,35 @@
+server:
+  port: 2021
+
+spring:
+  application:
+    name: APIGATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: CourseService
+          uri: lb://CourseService
+          predicates:
+            - Path=/courses/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: CourseService
+                fallbackuri: forward:/coursefallback
+         
+        - id: StudentService
+          uri: lb://StudentService
+          predicates:
+            - Path=/students/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: StudentService
+                fallbackuri: forward:/studentfallback
+                
+        
+
+         
+
+
+
