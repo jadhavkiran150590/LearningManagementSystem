@@ -17,8 +17,11 @@ import com.lms.repository.StudentRepository;
 import com.lms.service.StudentServiceImpl;
 import com.lms.vo.RestTemplateVO;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 
+@Api(value="Student Database")
 @RestController
 @RequestMapping("/students")
 @Slf4j
@@ -30,12 +33,14 @@ public class StudentController {
 	@Autowired
 	StudentRepository studentRepositoryImpl;
 
+	@ApiOperation(value="Get Student Details")
 	@GetMapping("/{studentId}")
 	public ResponseEntity<RestTemplateVO> getRestTemplateVO(@PathVariable long studentId) {
 		log.info("Retrieving data for Student Id: "+ studentId);
 		return ResponseEntity.ok(studentServiceImpl.getRestTemplateVO(studentId));
 	}
 
+	@ApiOperation(value="Add Student Details")
 	@PostMapping("/")
 	public ResponseEntity<Student> addStudentDetails(@RequestBody Student student) {
 		
