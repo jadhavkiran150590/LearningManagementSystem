@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
 import com.lms.model.Course;
@@ -27,7 +28,9 @@ public class CourseDaoImpl {
 
 	public List<Course> getAllCourseDetails() {
 		// TODO Auto-generated method stub
-		return courseRepositoryImpl.findAll();
+
+		List<Course> item = courseRepositoryImpl.findAll(Sort.by(Sort.Direction.DESC, "coursePrice"));
+		return item;
 	}
 
 	public Course addCourseDetails(Course course) {
@@ -44,7 +47,10 @@ public class CourseDaoImpl {
 		// TODO Auto-generated method stub
 		courseRepositoryImpl.deleteById(courseId);
 	}
-	
-	
-	
+
+	public List<Course> getAllCourseListDetails() {
+		// TODO Auto-generated method stub
+		return courseRepositoryImpl.findAll();
+	}
+
 }

@@ -1,5 +1,7 @@
 package com.lms.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,6 +18,7 @@ import com.lms.model.Student;
 import com.lms.repository.StudentRepository;
 import com.lms.service.StudentServiceImpl;
 import com.lms.vo.RestTemplateVO;
+import com.lms.vo.RestTemplateVOAll;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -38,6 +41,13 @@ public class StudentController {
 	public ResponseEntity<RestTemplateVO> getRestTemplateVO(@PathVariable long studentId) {
 		log.info("Retrieving data for Student Id: "+ studentId);
 		return ResponseEntity.ok(studentServiceImpl.getRestTemplateVO(studentId));
+	}
+	
+	@ApiOperation(value="Get All Student Details")
+	@GetMapping("/")
+	public ResponseEntity<List<RestTemplateVOAll>> getRestTemplateVOAll() {
+		log.info("Retrieving data for Student");
+		return ResponseEntity.ok(studentServiceImpl.getRestTemplateVOAll());
 	}
 
 	@ApiOperation(value="Add Student Details")

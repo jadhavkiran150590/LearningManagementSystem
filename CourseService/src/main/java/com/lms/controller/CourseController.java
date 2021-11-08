@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lms.exception.CourseNotFoundException;
 import com.lms.model.Course;
+import com.lms.model.CourseList;
 import com.lms.service.CourseServiceImpl;
 
 import lombok.extern.slf4j.Slf4j;
@@ -64,6 +65,11 @@ public class CourseController {
 	public ResponseEntity<String> deleteCourseDetails(@PathVariable long courseId) {
 		courseServiceImpl.deleteCourseDetails(courseId);
 		return ResponseEntity.ok("Course Detail Deleted Successfully");
+	}
+	
+	@GetMapping("/courselist")
+	public ResponseEntity<List<Course>> getAllCourseListDetails() {
+		return ResponseEntity.ok(courseServiceImpl.getAllCourseListDetails());
 	}
 
 }

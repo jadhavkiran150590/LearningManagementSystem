@@ -46,4 +46,9 @@ public class CourseServiceImpl {
 		courseDaoImpl.deleteCourseDetails(courseId);
 	}
 
+	public List<Course> getAllCourseListDetails() {
+		// TODO Auto-generated method stub
+		return courseDaoImpl.getAllCourseListDetails();
+	}
+
 }

@@ -9,6 +9,13 @@ import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+//list of student on the basis of course amount highest 
+
+//sort by asc/desc on controller layer/get
+
+//endpoint highest paying student- desc order amount need to fetch
+
+//getstudentbycourseamount
 
 @Entity
 @Data
@@ -36,5 +43,7 @@ public class Course {
 
 	@Column(name = "course_description")
 	private String courseDescription;
+	
+	
 
 }
